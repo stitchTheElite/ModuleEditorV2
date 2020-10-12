@@ -15,7 +15,7 @@ local TextButton = Instance.new("TextButton")
 local Clear = Instance.new("TextButton")
 local RSOnly = Instance.new("TextButton")
 
-local die = game.Players.LocalPlayer.PlayerGui:GetChildren()
+local die = game.CoreGui:GetChildren()
 for index, die in pairs(die) do
 	if die.Name == "ModuleEditor" then
 		die:Destroy()
@@ -24,7 +24,7 @@ for index, die in pairs(die) do
 end
 
 ModuleEditor.Name = "ModuleEditor"
-ModuleEditor.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ModuleEditor.Parent = game:WaitForChild("CoreGui")
 ModuleEditor.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Top.Name = "Top"
@@ -190,7 +190,7 @@ Clear.TextWrapped = true
 -- UPDATE FUNCTION
 function UpdateEditor()
     local dump = "";
-	loadstring("module = "..game.Players.LocalPlayer.PlayerGui.ModuleEditor.Top.MainFrame.ScriptBox.Text)();
+	loadstring("module = "..game.CoreGui.ModuleEditor.Top.MainFrame.ScriptBox.Text)();
 	for i,v in pairs(require(module)) do
 		if type(v) == "function" or type(v) == "table" then wait() else
 			dump = dump.."[\""..tostring(i) .. "\"] = " 
@@ -262,8 +262,8 @@ end)
 
 -- UPDATE BUTTON
 Update.MouseButton1Click:Connect(function()
-	local code = game.Players.LocalPlayer.PlayerGui.ModuleEditor.Top.MainFrame.Frame.TextFrame.ScriptBox.Text
-	loadstring("module = "..game.Players.LocalPlayer.PlayerGui.ModuleEditor.Top.MainFrame.ScriptBox.Text)();
+	local code = game.CoreGui.ModuleEditor.Top.MainFrame.Frame.TextFrame.ScriptBox.Text
+	loadstring("module = "..game.CoreGui.ModuleEditor.Top.MainFrame.ScriptBox.Text)();
 	for i,v in pairs(string.split(code,"\n")) do
 		loadstring("require(module)"..tostring(v))();
 	end
