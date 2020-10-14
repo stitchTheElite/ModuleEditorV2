@@ -1,4 +1,7 @@
--- Module Editor :)
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
 
 local ModuleEditor = Instance.new("ScreenGui")
 local Container = Instance.new("Frame")
@@ -290,6 +293,7 @@ TextLabel_2.Font = Enum.Font.Code
 TextLabel_2.Text = ""
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextSize = 14.000
+TextLabel_2.TextScaled = true
 
 Main_2.Name = "Main"
 Main_2.Parent = ExplorerContainer
