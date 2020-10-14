@@ -1,7 +1,4 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
+-- Module Editor :)
 
 local ModuleEditor = Instance.new("ScreenGui")
 local Container = Instance.new("Frame")
@@ -430,34 +427,61 @@ function LoadModules(path0, path1, path2)
 	local modules = path0
 	for index, modules in pairs(modules) do
 		if modules.ClassName == "ModuleScript" then
-			createButton()
-			Button.Text = modules.Parent.Name.."."..modules.Name
-			Button.MouseButton1Down:Connect(function()
-				TextLabel_2.Text = GetPath(modules)
-				PathBox.Text = GetPath(modules)
-			end)
+			if string.len(modules.Parent.Name..modules.Name) > 10 then
+			    createButton()
+    			Button.Text = modules.Parent.Name..".\n"..modules.Name
+        	    Button.MouseButton1Down:Connect(function()
+        			TextLabel_2.Text = GetPath(modules)
+        			PathBox.Text = GetPath(modules)
+        	    end)
+		    else
+		        createButton()
+		        Button.Text = modules.Parent.Name.."."..modules.Name 
+                Button.MouseButton1Down:Connect(function()
+        			TextLabel_2.Text = GetPath(modules)
+        			PathBox.Text = GetPath(modules)
+        	    end)
+    		end
 		end
 	end
 	local modules = path1
 	for index, modules in pairs(modules) do
 		if modules.ClassName == "ModuleScript" then
-			createButton()
-			Button.Text = modules.Parent.Name.."."..modules.Name
-			Button.MouseButton1Down:Connect(function()
-				TextLabel_2.Text = GetPath(modules)
-				PathBox.Text = GetPath(modules)
-			end)
+			if string.len(modules.Parent.Name..modules.Name) > 10 then
+			    createButton()
+    			Button.Text = modules.Parent.Name..".\n"..modules.Name
+        	    Button.MouseButton1Down:Connect(function()
+        			TextLabel_2.Text = GetPath(modules)
+        			PathBox.Text = GetPath(modules)
+        	    end)
+		    else
+		        createButton()
+		        Button.Text = modules.Parent.Name.."."..modules.Name 
+                Button.MouseButton1Down:Connect(function()
+        			TextLabel_2.Text = GetPath(modules)
+        			PathBox.Text = GetPath(modules)
+        	    end)
+    		end
 		end
 	end
 	local modules = path2
 	for index, modules in pairs(modules) do
 		if modules.ClassName == "ModuleScript" then
-			createButton()
-			Button.Text = modules.Parent.Name.."."..modules.Name
-			Button.MouseButton1Down:Connect(function()
-				TextLabel_2.Text = GetPath(modules)
-				PathBox.Text = GetPath(modules)
-			end)
+			if string.len(modules.Parent.Name..modules.Name) > 10 then
+			    createButton()
+    			Button.Text = modules.Parent.Name..".\n"..modules.Name
+        	    Button.MouseButton1Down:Connect(function()
+        			TextLabel_2.Text = GetPath(modules)
+        			PathBox.Text = GetPath(modules)
+        	    end)
+		    else
+		        createButton()
+		        Button.Text = modules.Parent.Name.."."..modules.Name 
+                Button.MouseButton1Down:Connect(function()
+        			TextLabel_2.Text = GetPath(modules)
+        			PathBox.Text = GetPath(modules)
+        	    end)
+    		end
 		end
 	end
     for i,v in pairs(getnilinstances()) do 
