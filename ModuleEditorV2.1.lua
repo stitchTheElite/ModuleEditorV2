@@ -395,7 +395,7 @@ local function GetPath(object)
 	local result = "."..object.Name
 	object = object.Parent
 	while object and object ~= game do
-		result = "['"..object.Name.."']"..result
+		result = '["'..object.Name..'"]'..result
 		object = object.Parent
 	end
 	result = "game"..result
