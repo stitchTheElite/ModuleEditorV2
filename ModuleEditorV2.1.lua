@@ -460,6 +460,16 @@ function LoadModules(path0, path1, path2)
 			end)
 		end
 	end
+    for i,v in pairs(getnilinstances()) do 
+        if v.ClassName == "ModuleScript" then
+            createButton()
+            Button.Text = "nil."..v.Name
+    		Button.MouseButton1Down:Connect(function()
+        		TextLabel_2.Text = GetPath(v)
+        		PathBox.Text = GetPath(v)
+    		end)
+        end
+    end
 end
 
 Load.MouseButton1Down:Connect(function()
