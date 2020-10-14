@@ -293,7 +293,6 @@ TextLabel_2.Font = Enum.Font.Code
 TextLabel_2.Text = ""
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextSize = 14.000
-TextLabel_2.TextScaled = true
 
 Main_2.Name = "Main"
 Main_2.Parent = ExplorerContainer
@@ -431,73 +430,51 @@ function LoadModules(path0, path1, path2)
 	local modules = path0
 	for index, modules in pairs(modules) do
 		if modules.ClassName == "ModuleScript" then
-			if string.len(modules.Parent.Name..modules.Name) > 10 then
-			    createButton()
-    			Button.Text = modules.Parent.Name..".\n"..modules.Name
-        	    Button.MouseButton1Down:Connect(function()
-        			TextLabel_2.Text = GetPath(modules)
-        			PathBox.Text = GetPath(modules)
-        	    end)
-		    else
-		        createButton()
-		        Button.Text = modules.Parent.Name.."."..modules.Name 
-                Button.MouseButton1Down:Connect(function()
-        			TextLabel_2.Text = GetPath(modules)
-        			PathBox.Text = GetPath(modules)
-        	    end)
-    		end
+			createButton()
+			Button.Text = modules.Parent.Name.."."..modules.Name
+			Button.MouseButton1Down:Connect(function()
+				TextLabel_2.Text = GetPath(modules)
+				PathBox.Text = GetPath(modules)
+			end)
 		end
 	end
 	local modules = path1
 	for index, modules in pairs(modules) do
 		if modules.ClassName == "ModuleScript" then
-			if string.len(modules.Parent.Name..modules.Name) > 10 then
-			    createButton()
-    			Button.Text = modules.Parent.Name..".\n"..modules.Name
-        	    Button.MouseButton1Down:Connect(function()
-        			TextLabel_2.Text = GetPath(modules)
-        			PathBox.Text = GetPath(modules)
-        	    end)
-		    else
-		        createButton()
-		        Button.Text = modules.Parent.Name.."."..modules.Name 
-                Button.MouseButton1Down:Connect(function()
-        			TextLabel_2.Text = GetPath(modules)
-        			PathBox.Text = GetPath(modules)
-        	    end)
-    		end
+			createButton()
+			Button.Text = modules.Parent.Name.."."..modules.Name
+			Button.MouseButton1Down:Connect(function()
+				TextLabel_2.Text = GetPath(modules)
+				PathBox.Text = GetPath(modules)
+			end)
 		end
 	end
 	local modules = path2
 	for index, modules in pairs(modules) do
 		if modules.ClassName == "ModuleScript" then
-			if string.len(modules.Parent.Name..modules.Name) > 10 then
+			createButton()
+			Button.Text = modules.Parent.Name.."."..modules.Name
+			Button.MouseButton1Down:Connect(function()
+				TextLabel_2.Text = GetPath(modules)
+				PathBox.Text = GetPath(modules)
+			end)
+		end
+	end
+	local modules = path0
+	for index, modules in pairs(getnilinstances()) do
+		if modules.ClassName == "ModuleScript" then
+			local x = GetPath(modules)
+			if x == nil then
+			    print(modules)
 			    createButton()
-    			Button.Text = modules.Parent.Name..".\n"..modules.Name
-        	    Button.MouseButton1Down:Connect(function()
-        			TextLabel_2.Text = GetPath(modules)
-        			PathBox.Text = GetPath(modules)
-        	    end)
-		    else
-		        createButton()
-		        Button.Text = modules.Parent.Name.."."..modules.Name 
-                Button.MouseButton1Down:Connect(function()
-        			TextLabel_2.Text = GetPath(modules)
-        			PathBox.Text = GetPath(modules)
-        	    end)
+    			Button.Text = "Nil Module: "..modules.Name
+    			Button.MouseButton1Down:Connect(function()
+    				TextLabel_2.Text = GetPath(modules)
+    				PathBox.Text = GetPath(modules)
+    			end)
     		end
 		end
 	end
-    for i,v in pairs(getnilinstances()) do 
-        if v.ClassName == "ModuleScript" then
-            createButton()
-            Button.Text = "nil."..v.Name
-    		Button.MouseButton1Down:Connect(function()
-        		TextLabel_2.Text = GetPath(v)
-        		PathBox.Text = GetPath(v)
-    		end)
-        end
-    end
 end
 
 Load.MouseButton1Down:Connect(function()
@@ -544,7 +521,7 @@ Execute.MouseButton1Down:Connect(function()
 		loadstring("require(module)"..tostring(v))();
 		if game.CoreGui.ModuleEditor.Container.Bottom.CheckBox.ImageLabel.Visible == true then
 		    if syn then
-			    syn_clipboard_set('--Script generated with Module Editor v2\n--Questions: stitch the elite#9709\nlocal code = {\n'..game.CoreGui.ModuleEditor.Container.Main.Content.ScriptBox.Text..'}\nlocal module = require('..game.CoreGui.ModuleEditor.Container.Bottom.PathBox.Text..')'..'\nfor key, value in pairs(code) do if typeof(value) == "number" then module[key] = value'.. " elseif typeof(value) == 'string'".. " then module[key] = ".. 'value'..' end end')
+			    syn_clipboard_set('--Script generated with Module Editor v2\n--Questions: stitch the elite#9709\nlocal code = {\n'..game.CoreGui.ModuleEditor.Container.Main.Content.ScriptBox.Text.."}\nlocal module = require("..game.CoreGui.ModuleEditor.Container.Bottom.PathBox.Text..")"..'\nfor key, value in pairs(code) do if typeof(value) == "number" then module[key] = value'.. " elseif typeof(value) == 'string'".. " then module[key] = ".. 'value'..' end end')
 			end
 		end
 	end
